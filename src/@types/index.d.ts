@@ -1,20 +1,26 @@
-export type Products = {
-  'id': number;
-  'name': string;
-  'price': number;
-  'description': string;
-  'imageUri': string;
+export type ProductInfo = {
+  'product': Product;
+  'quantity': number;
 }
 
+export type Product = {
+    'id': number;
+    'name': string;
+    'price': number;
+    'description': string;
+    'imageUri': string;
+  }
+
 export type Order = {
-  'id': number;
-  'address': string;
+  'orderId': number;
+  'street': string;
   'latitude': number;
   'longitude': number;
-  'moment': string;
-  'status': string;
+  'orderStatus': string;
   'total': number;
-  'products': Products[];
+  'payType': string;
+  'orderDate': string;
+  'productsOrder': ProductInfo[];
 }
 
 declare module '*.png';

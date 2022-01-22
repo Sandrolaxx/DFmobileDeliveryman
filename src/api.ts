@@ -1,11 +1,50 @@
-import axios from 'axios';
+import axios from "axios";
+import {
+    QUARKUS_USERNAME, QUARKUS_PASSWORD, QUARKUS_BASE_MARKETPLACE,
+    QUARKUS_AUTHENTICATION, QUARKUS_AUTH
+} from "react-native-dotenv";
 
-const API_URL = 'http://192.168.1.5:8082';
+export async function fetchOrders() {
 
-export function fetchOrders() {
-  return axios(`${API_URL}/orders`);
+    const token: string = await generateToken(QUARKUS_USERNAME, QUARKUS_PASSWORD);
+    const api = axios.create({ baseURL: QUARKUS_BASE_MARKETPLACE });
+
+    return await api.get("dona-frost/v1/order", {
+        headers: {
+            orderStatus: "IN_DELIVERY",
+            authorization: `Bearer ${token}`,
+        }
+    })
+    .then(res => res);
 }
 
 export function confirmOrder(idOrder: number) {
-  return axios.put(`${API_URL}/orders/${idOrder}/delivered`);
+    return axios.put(`/orders/${idOrder}/delivered`);
+}
+
+export async function generateToken(username: string, password: string) {
+
+    const qs = require("qs");
+    const api = axios.create({ baseURL: QUARKUS_AUTHENTICATION });
+
+    let token: string;
+
+    await api.post("/openid-connect/token",
+        qs.stringify({
+            grant_type: "password",
+            username: username,
+            password: password,
+
+        }), {
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            authorization: `Basic ${QUARKUS_AUTH}`,
+        },
+        withCredentials: false,
+    })
+        .then(res => token = res.data.access_token)
+        .catch(() => token = "Erro ao gerar token de autenticação! Tente novamente.");
+
+    return token!;
+
 }
