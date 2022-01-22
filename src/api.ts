@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://192.168.0.105:8080';
+const API_URL = 'http://192.168.1.5:8082';
 
 export function fetchOrders() {
   return axios(`${API_URL}/orders`);
