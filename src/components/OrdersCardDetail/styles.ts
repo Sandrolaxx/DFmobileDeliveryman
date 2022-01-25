@@ -1,4 +1,4 @@
-import styled from "../../../node_modules/styled-components/native";
+import styled from "styled-components/native";
 
 export const Container = styled.View`
     margin-top: 2%;
@@ -46,5 +46,12 @@ export const CardProductList = styled.View`
     border-top-color: #E6E6E6;
     border-top-width: 1px;
     margin-top: 20px;
+    padding-top: 15px;
+`;
+
+export const CardLine = styled.View`
+    border-top-color: #E6E6E6;
+    border-top-width: 1px;
+    margin-top: 15px;
     padding-top: 15px;
 `;

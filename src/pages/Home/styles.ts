@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
 export const Container = styled.View`
     font-size: 20px;
@@ -14,7 +14,7 @@ export const TextTitle = styled.Text`
     text-align: center;
     font-size: 26px;
     line-height: 25px;
-    font-family: 'Roboto-Bold';
+    font-family: "Roboto-Bold";
 `;
 
 export const TextSubTitle = styled.Text`
@@ -22,6 +22,6 @@ export const TextSubTitle = styled.Text`
     text-align: center;
     font-size: 20px;
     line-height: 25px;
-    font-family: 'Roboto-Medium';
+    font-family: "Roboto-Medium";
     color: #3d3c3c;
 `;

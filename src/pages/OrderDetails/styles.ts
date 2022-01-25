@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import styled from '../../../node_modules/styled-components/native';
+import styled from "../../../node_modules/styled-components/native";
 
 export const Container = styled.View`
     padding-right: 2%;

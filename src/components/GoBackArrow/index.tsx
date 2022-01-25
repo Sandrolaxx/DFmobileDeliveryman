@@ -1,16 +1,11 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable indent */
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { Container, GoBackImg } from './styles';
-import arrowBack from '../../assets/icons/arrow.png';
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Container, GoBackImg } from "./styles";
 
 function GoBackArrow() {
     const navigation = useNavigation();
+    const arrowBack = require("../../assets/icons/arrow.png");
 
     const hadleGoBack = () => {
         navigation.goBack();

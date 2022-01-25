@@ -9,13 +9,14 @@ export async function fetchOrders() {
     const token: string = await generateToken(QUARKUS_USERNAME, QUARKUS_PASSWORD);
     const api = axios.create({ baseURL: QUARKUS_BASE_MARKETPLACE });
 
-    return await api.get("dona-frost/v1/order", {
+    return api.get("dona-frost/v1/order", {
         headers: {
             orderStatus: "IN_DELIVERY",
             authorization: `Bearer ${token}`,
         }
     })
     .then(res => res);
+    
 }
 
 export function confirmOrder(idOrder: number) {
@@ -34,7 +35,6 @@ export async function generateToken(username: string, password: string) {
             grant_type: "password",
             username: username,
             password: password,
-
         }), {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -42,8 +42,8 @@ export async function generateToken(username: string, password: string) {
         },
         withCredentials: false,
     })
-        .then(res => token = res.data.access_token)
-        .catch(() => token = "Erro ao gerar token de autenticação! Tente novamente.");
+    .then(res => token = res.data.access_token)
+    .catch(() => token = "Erro ao gerar token de autenticação! Tente novamente.");
 
     return token!;
 

@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-import styled from '../../../node_modules/styled-components/native';
+import styled from "../../../node_modules/styled-components/native";
 
 export const Container = styled.View`
     background: #56cfe1;
     height: 70px;
-    font-family: 'RobotoMono-Bold';
+    font-family: "RobotoMono-Bold";
     font-size: 20px;
     flex-flow:row;
     align-items: center;
@@ -23,5 +23,5 @@ export const LogoText = styled.Text`
     font-size: 20px;
     line-height: 25px;
     letter-spacing: 0.24px;
-    font-family: 'Roboto-Bold';
+    font-family: "Roboto-Bold";
 `;
