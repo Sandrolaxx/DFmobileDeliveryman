@@ -3,7 +3,7 @@ import { StatusBar } from "react-native";
 import { Container, LogoDonaFrost, LogoText } from "./styles";
 
 export default function Header() {
-    const logo = "../../assets/icons/logo.png";
+    const logo = require("../../assets/icons/logo.png");
 
     return (
         <Container>
