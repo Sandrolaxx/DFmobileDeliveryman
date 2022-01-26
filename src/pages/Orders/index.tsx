@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Alert } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Alert, ScrollView } from "react-native";
 import { Order } from "../../@types";
 import { fetchOrders } from "../../api";
 import GoBackArrow from "../../components/GoBackArrow";
@@ -37,12 +36,12 @@ export default function Orders() {
             {isLoading ? (
                 <LoadingText>Buscando pedidos...</LoadingText>
             ) : orders.map((order) => (
-                <TouchableWithoutFeedback
+                <ScrollView
                     key={order.orderId}
-                    onPress={() => handleOnPress(order)}
+                    onTouchEnd={() => handleOnPress(order)}
                 >
                     <OrdersCard order={order} />
-                </TouchableWithoutFeedback>
+                </ScrollView>
             ))}
         </Container>
     );

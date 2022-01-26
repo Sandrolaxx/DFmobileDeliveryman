@@ -1,8 +1,7 @@
-/* eslint-disable import/prefer-default-export */
-import { RectButton } from "react-native-gesture-handler";
+import { Button } from "react-native";
 import styled from "../../../node_modules/styled-components/native";
 
-export const Container = styled(RectButton)`
+export const Container = styled(Button)`
     height: 50px;
     margin-right: 10%;
     margin-left: 10%;

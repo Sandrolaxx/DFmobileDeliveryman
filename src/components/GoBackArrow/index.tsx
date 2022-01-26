@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Container, GoBackImg } from "./styles";
+import { Touchable, TouchableNativeFeedbackBase } from "react-native";
 
 function GoBackArrow() {
     const navigation = useNavigation();
@@ -13,9 +13,9 @@ function GoBackArrow() {
 
     return (
         <Container>
-            <TouchableWithoutFeedback onPress={hadleGoBack}>
+            <TouchableNativeFeedbackBase onPress={hadleGoBack}>
                 <GoBackImg source={arrowBack} />
-            </TouchableWithoutFeedback>
+            </TouchableNativeFeedbackBase>
         </Container>
     );
 }
