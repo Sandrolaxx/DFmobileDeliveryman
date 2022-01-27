@@ -2,7 +2,7 @@ import axios from "axios";
 import {
     QUARKUS_USERNAME, QUARKUS_PASSWORD, QUARKUS_BASE_MARKETPLACE,
     QUARKUS_AUTHENTICATION, QUARKUS_AUTH
-} from "react-native-dotenv";
+} from "@env";
 
 export async function fetchOrders() {
 
