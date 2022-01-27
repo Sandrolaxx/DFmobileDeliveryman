@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native";
 import styled from "../../../node_modules/styled-components/native";
 
 export const Container = styled(ScrollView)`

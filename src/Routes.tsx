@@ -8,20 +8,20 @@ import OrderDetails from "./pages/OrderDetails";
 const Stack = createStackNavigator();
 
 export default function Routes() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        headerMode="none"
-        screenOptions={{
-          cardStyle: {
-            backgroundColor: "#FFF",
-          },
-        }}
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Orders" component={Orders} />
-        <Stack.Screen name="OrderDetails" component={OrderDetails} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false,
+                    cardStyle: {
+                        backgroundColor: "#FFF",
+                    },
+                }}
+            >
+                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="Orders" component={Orders} />
+                <Stack.Screen name="OrderDetails" component={OrderDetails} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
