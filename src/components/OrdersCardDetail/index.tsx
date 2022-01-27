@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import React from "react";
 import { Order } from "../../@types";
-import { formatPrice } from "../utils/utils";
+import { enumOrderParser, formatPrice } from "../utils/utils";
 import {
     CardHeader, CardLine, CardOrderName, CardOrderPrice,
     CardProductList, CardText, Container
@@ -35,7 +35,7 @@ export default function OrdersCardDetail({ order }: Props) {
                 ))}
             </CardProductList>
             <CardLine />
-            <CardText>STATUS PEDIDO: {order.orderStatus}</CardText>
+            <CardText>STATUS PEDIDO: {enumOrderParser(order.orderStatus)}</CardText>
             <CardText>DATA PAGAMENTO: {paymentDate} as {paymentHour}</CardText>
             <CardText>TIPO PAGAMENTO: {order.payType}</CardText>
             <CardText>NOME CLIENTE: {order.clientName.toUpperCase()}</CardText>

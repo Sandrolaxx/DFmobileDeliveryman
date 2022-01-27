@@ -19,13 +19,20 @@ export type Order = {
     "numberAp": number;
     "latitude": number;
     "longitude": number;
-    "orderStatus": string;
+    "orderStatus": OrderStatus;
     "total": number;
     "payType": string;
     "orderDate": number;
     "clientName": string;
     "deliveryValue": number;
     "productsOrder": ProductInfo[];
+}
+
+export enum OrderStatus {
+    AWAITING_PAYMENT = "AWAITING_PAYMENT",    
+    AWAITING_DELIVERY = "AWAITING_DELIVERY",    
+    IN_DELIVERY = "IN_DELIVERY",
+    FINISHED = "FINISHED",
 }
 
 declare module "*.png";
