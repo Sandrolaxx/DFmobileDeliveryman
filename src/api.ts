@@ -3,24 +3,36 @@ import {
     QUARKUS_USERNAME, QUARKUS_PASSWORD, QUARKUS_BASE_MARKETPLACE,
     QUARKUS_AUTHENTICATION, QUARKUS_AUTH
 } from "@env";
+import { OrderStatus } from "./@types/types";
 
 export async function fetchOrders() {
 
     const token: string = await generateToken(QUARKUS_USERNAME, QUARKUS_PASSWORD);
     const api = axios.create({ baseURL: QUARKUS_BASE_MARKETPLACE });
 
-    return api.get("dona-frost/v1/order", {
+    return api.get("/dona-frost/v1/order", {
         headers: {
-            orderStatus: "IN_DELIVERY",
-            authorization: `Bearer ${token}`,
+            orderStatus: OrderStatus.AWAITING_DELIVERY,
+            authorization: `Bearer ${token}`
         }
     })
     .then(res => res);
     
 }
 
-export function confirmOrder(idOrder: number) {
-    return axios.put(`/orders/${idOrder}/delivered`);
+export async function changeOrderStatus(status: OrderStatus, orderId: number) {
+
+    const token: string = await generateToken(QUARKUS_USERNAME, QUARKUS_PASSWORD);
+    const api = axios.create({ baseURL: QUARKUS_BASE_MARKETPLACE });
+
+    return api.put("/dona-frost/v1/order", {
+        headers: {
+            orderId: orderId,
+            orderStatus: status,
+            authorization: `Bearer ${token}`
+        }
+    }).catch(res => console.log(res));
+
 }
 
 export async function generateToken(username: string, password: string) {

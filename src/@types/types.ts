@@ -34,5 +34,3 @@ export enum OrderStatus {
     IN_DELIVERY = "IN_DELIVERY",
     FINISHED = "FINISHED",
 }
-
-declare module "*.png";

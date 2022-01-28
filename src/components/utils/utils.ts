@@ -1,4 +1,4 @@
-import { OrderStatus } from "../../@types";
+import { OrderStatus } from "../../@types/types";
 
 export function formatPrice(price: number) {
     return price.toFixed(2)
@@ -18,5 +18,4 @@ export function enumOrderParser(status: OrderStatus):string {
         case OrderStatus.FINISHED:
             return "Finalizado";
     }
-
 }

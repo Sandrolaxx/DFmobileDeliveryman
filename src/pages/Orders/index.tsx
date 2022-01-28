@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { Alert, ScrollView } from "react-native";
-import { Order } from "../../@types";
+import { Order } from "../../@types/types";
 import { fetchOrders } from "../../api";
 import GoBackArrow from "../../components/GoBackArrow";
 import OrdersCard from "../../components/OrdersCard";
@@ -21,8 +21,8 @@ export default function Orders() {
 
     function fetchData() {
         return fetchOrders()
-            .then((response) => setOrders(response.data))
-            .catch(() => Alert.alert("Houve um erro ao buscar os pedidos :("))
+            .then(response => setOrders(response.data))
+            .catch(() => Alert.alert("Houve um erro ao buscar os pedidos😕"))
             .finally(() => setIsLoading(false));
     }
 

@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import React from "react";
-import { Order } from "../../@types";
+import { Order } from "../../@types/types";
 import { enumOrderParser, formatPrice } from "../utils/utils";
 import {
     CardHeader, CardLine, CardOrderName, CardOrderPrice,
@@ -38,10 +38,10 @@ export default function OrdersCardDetail({ order }: Props) {
             <CardText>STATUS PEDIDO: {enumOrderParser(order.orderStatus)}</CardText>
             <CardText>DATA PAGAMENTO: {paymentDate} as {paymentHour}</CardText>
             <CardText>TIPO PAGAMENTO: {order.payType}</CardText>
-            <CardText>NOME CLIENTE: {order.clientName.toUpperCase()}</CardText>
+            <CardText>NOME CLIENTE: {order.clientName}</CardText>
             <CardLine />
-            <CardText>BAIRRO: {order.district.toUpperCase()} </CardText>
-            <CardText>RUA: {order.street.toUpperCase()} </CardText>
+            <CardText>BAIRRO: {order.district} </CardText>
+            <CardText>RUA: {order.street} </CardText>
             <CardText>Nº: {order.number} </CardText>
             <CardText>{order.numberAp != null ? "Nº App: " + order.numberAp : ""} </CardText>
             <CardText>VALOR ENTREGA: {formatPrice(order.deliveryValue)}</CardText>

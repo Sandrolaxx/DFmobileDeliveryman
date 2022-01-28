@@ -1,12 +1,12 @@
 import React from "react";
 import dayjs from "dayjs";
-import { Order } from "../../@types";
 import "dayjs/locale/pt-br";
 import relativeTime from "dayjs/plugin/relativeTime";
 import {
     Container, CardText, CardHeader, CardOrderName, CardOrderPrice, CardProductList,
 } from "./styles";
 import { formatPrice } from "../utils/utils";
+import { Order } from "../../@types/types";
 
 dayjs.locale("pt-br");
 dayjs.extend(relativeTime);
