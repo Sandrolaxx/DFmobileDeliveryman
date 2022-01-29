@@ -17,8 +17,8 @@ interface Props {
 }
 
 function OrderDetails({ route }: Props) {
-    const { order } = route.params;
     const navigation = useNavigation();
+    const { order } = route.params;
 
     function handleStartNavigation() {
         changeOrderStatus(OrderStatus.IN_DELIVERY, order.orderId);

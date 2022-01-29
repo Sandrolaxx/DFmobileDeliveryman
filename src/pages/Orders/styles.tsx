@@ -7,9 +7,18 @@ export const Container = styled(ScrollView)`
 `;
 
 export const LoadingText = styled.Text`
-    font-size: 28px;
+    font-size: 24px;
     text-align:center;
-    line-height: 500px;
+    padding-top: 55%;
+    letter-spacing: -0.24px;
+    color: #4EA8DE;    
+    font-family: "Roboto-Bold";
+`;
+
+export const NoOrdersText = styled.Text`
+    font-size: 24px;
+    text-align:center;
+    padding-top: 55%;
     letter-spacing: -0.24px;
     color: #4EA8DE;    
     font-family: "Roboto-Bold";

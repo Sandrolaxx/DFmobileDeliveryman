@@ -8,24 +8,41 @@ import OrdersCard from "../../components/OrdersCard";
 import {
     Container,
     LoadingText,
+    NoOrdersText
 } from "./styles";
 
 export default function Orders() {
     const [orders, setOrders] = useState<Order[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const navigation = useNavigation();
-    const isFocused = useIsFocused();
+
+    function isFocused() {
+        if (useIsFocused()) {
+            return true;
+        }
+    }
 
     useEffect(() => {
-        fetchData();
-    }, [isFocused]);
+        let isMounted = true;
 
-    function fetchData() {
-        return fetchOrders()
-            .then(response => setOrders(response))
-            .catch(() => Alert.alert("Houve um erro ao buscar os pedidos😕"))
-            .finally(() => setIsLoading(false));
-    }
+        fetchOrders()
+            .then(response => {
+                if (isMounted) {
+                    setOrders(response)
+                }
+            })
+            .catch(() => {Alert.alert("Houve um erro ao buscar os pedidos😕")})
+            .finally(() => {
+                if (isMounted) {
+                    setIsLoading(false);
+                }
+            });
+        
+        return () => {
+            isMounted = false;
+        }
+
+    }, [isFocused()]);
 
     function handleOnPress(order: Order) {
         navigation.navigate("OrderDetails", { order });
@@ -35,15 +52,23 @@ export default function Orders() {
         <Container>
             <GoBackArrow />
             {isLoading ? (
-                <LoadingText>Buscando pedidos...</LoadingText>
-            ) : orders.map((order) => (
-                <ScrollView
-                    key={order.orderId}
-                    onTouchEnd={() => handleOnPress(order)}
-                >
-                    <OrdersCard order={order} />
-                </ScrollView>
-            ))}
+                <LoadingText>Buscando pedidos⚡...</LoadingText>
+            ) : orders != null && orders.length > 0 ? (
+                orders.map((order) => (
+                    <ScrollView
+                        key={order.orderId}
+                        onTouchEnd={() => handleOnPress(order)}
+                    >
+                        <OrdersCard order={order} />
+                    </ScrollView>
+                )) 
+            ) :
+            <NoOrdersText>
+                Nenhum pedido pendente
+                {"\n"} 
+                de entrega 😎
+            </NoOrdersText>
+            }
         </Container>
     );
 }

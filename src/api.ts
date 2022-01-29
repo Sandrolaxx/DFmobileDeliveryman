@@ -40,7 +40,7 @@ export async function changeOrderStatus(status: OrderStatus, orderId: number) {
 
 }
 
-export async function generateToken(username: string, password: string) {
+export function generateToken(username: string, password: string) {
 
     const qs = require("qs");
     const baseUrl = QUARKUS_AUTHENTICATION.concat("/openid-connect/token");
