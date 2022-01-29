@@ -16,12 +16,6 @@ export default function Orders() {
     const [isLoading, setIsLoading] = useState(true);
     const navigation = useNavigation();
 
-    function isFocused() {
-        if (useIsFocused()) {
-            return true;
-        }
-    }
-
     useEffect(() => {
         let isMounted = true;
 
@@ -42,7 +36,7 @@ export default function Orders() {
             isMounted = false;
         }
 
-    }, [isFocused()]);
+    }, [useIsFocused()]);
 
     function handleOnPress(order: Order) {
         navigation.navigate("OrderDetails", { order });
