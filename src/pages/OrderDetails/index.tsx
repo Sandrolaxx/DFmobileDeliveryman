@@ -28,12 +28,13 @@ function OrderDetails({ route }: Props) {
 
     function hadleConfirmOrder() {
         changeOrderStatus(OrderStatus.FINISHED, order.orderId)
-            .then(() => {
-                Alert.alert(`Confirmada a entrega do pedido ${order.orderId}! 🛵`);
-                navigation.goBack();
-            })
-            .catch(() => {
-                Alert.alert(`Ouve um erro ao confirmar o pedido ${order.orderId}!❌🛵`);
+            .then(response => {
+                if (response != null &&response.ok) {
+                    Alert.alert(`Confirmada a entrega do pedido ${order.orderId}! 🛵`);
+                    navigation.goBack();
+                } else {
+                    Alert.alert(`Ouve um erro ao confirmar o pedido ${order.orderId}!❌🛵`);
+                }
             });
     };
 
