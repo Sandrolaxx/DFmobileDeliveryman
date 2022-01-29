@@ -128,10 +128,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    compileSdkVersion 30
     defaultConfig {
-        applicationId "com.mobiledeliveryman"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        applicationId "com.oaics.customer"
+        minSdkVersion 23
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
     }
