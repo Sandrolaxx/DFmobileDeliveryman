@@ -106,3 +106,9 @@ adb -s emulator-5554 reverse tcp:9091 tcp:9091
 ```
 
 O aplicativo abrirá automaticamente ao fim do comando yarn android.
+
+--
+
+## 📃 Licença
+
+Este projeto está sobre a licença [Apache 2.0](LICENSE).
